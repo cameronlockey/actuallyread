@@ -11,3 +11,11 @@ h6 {
   @include body-font;
   font-weight: 700;
 }
+
+.navbar-brand.logo {
+  @include display-font;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 26px;
+  color: $blue;
+}
