@@ -4,6 +4,7 @@
 
 // Global CSS
 @import "partials/global.scss";
+@import "partials/spacing.scss";
 
 // Components
 @import "partials/masthead.scss";
@@ -12,3 +13,49 @@
 @import "partials/testimonials.scss";
 @import "partials/call-to-action.scss";
 @import "partials/footer.scss";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @include font-body;
+  color: $gray-700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-body;
+  font-weight: 700;
+}
+
+form {
+  width: 100%
+}
+
+a:hover {
+  @extend .nodec;
+}
+
+.navbar-brand.logo {
+  @include font-display;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 26px;
+  color: $blue;
+}
+
+.current-user {
+  img {
+    max-height: 40px;
+  }
+
+  span {
+    @extend .marl-xs;
+    line-height: 40px;
+  }
+}

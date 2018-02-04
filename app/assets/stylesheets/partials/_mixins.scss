@@ -8,10 +8,10 @@
 }
 
 // Font Mixins
-@mixin body-font {
+@mixin font-body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-@mixin display-font {
+@mixin font-display {
   font-family: $font-display, 'Times New Roman', Times, serif;
 }

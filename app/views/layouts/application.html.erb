@@ -12,12 +12,29 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand logo" href="#">Actually Read <i class="fa fa-book"></i></a>
-        <a class="btn btn-primary" href="#">Sign In</a>
+        <a class="navbar-brand logo" href="/">Actually Read <i class="fa fa-book"></i></a>
+        <% if current_user %>
+          <div class="dropdown show">
+            <a class="current-user dropdown-toggle" href="/account" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="<%= current_user.image %>" class="img-circle">
+              <span class="t-primary"><%= current_user.display_name %></span>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="/books/new"><i class="fa fa-fw fa-book"></i> Start a new book</a>
+              <a class="dropdown-item" href="/account"><i class="fa fa-fw fa-user"></i> My Account</a>
+              <a class="dropdown-item" href="/logout"><i class="fa fa-lock fa-fw"></i> Logout</a>
+            </div>
+          </div>
+        <% else %>
+          <a href="href="/auth/google_oauth2"" class="btn btn-primary" href="#">Sign In</a>
+        <% end %>
       </div>
     </nav>
 
-    <%= yield %>
+    <div id="view">
+      <%= yield %>
+    </div>
 
     <!-- Footer -->
     <footer class="footer bg-light">

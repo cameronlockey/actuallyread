@@ -1,7 +1,8 @@
-<%= bootstrap_form_for(book) do |f| %>
+<div class="row">
+<%= bootstrap_form_for(book, class: 'full') do |f| %>
   <% if book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(book.errors.count, 'error') %> prohibited this book from being saved:</h2>
 
       <ul>
       <% book.errors.full_messages.each do |message| %>
@@ -11,12 +12,71 @@
     </div>
   <% end %>
 
-  <%= f.text_field :title %>
-  <%= f.number_field :chapters %>
-  <%= f.number_field :pages %>
-  <%=  %>
+  <%= f.text_field(
+        :title,
+        {
+          label: 'Book Title',
+          placeholder: 'e.g. Lord of the Rings',
+          wrapper: { class: 'col-12'},
+        }
+      )
+  %>
+  <div class="col-12">
+    <label class="required" for="book_count">This book has:</label>
+  </div>
+  <%= f.number_field(
+        :count,
+        {
+          placeholder: 'Number of pages or chapters',
+          hide_label: true,
+          step: 1,
+          default: 1,
+          wrapper: { class: 'col-md-6 pull-left' },
+        }
+      )
+  %>
+  <%= f.select(
+        :units,
+        ['Chapters','Pages'],
+        { hide_label: true, prompt: 'Choose...' },
+        {
+          class: 'selectpicker',
+          wrapper: {
+            class: 'col-md-6 pull-left',
+          }
+        }
+      )
+  %>
+  <%= f.number_field(
+        :chunk_size,
+        {
+          label: 'How many do you want to read in each assignment?',
+          default: 1,
+          step: 1,
+          wrapper: { class: 'col-12 clear' },
+        }
+      )
+  %>
+  <%= f.date_select(
+        :start_at,
+        {
+          label: 'Start reading this book on:',
+          order: [:month, :day, :year],
+        },
+        wrapper: { class: 'col-12' },
+      )
+  %>
+  <%= f.date_select(
+        :finish_at,
+        {
+          label: 'Finish reading this book on:',
+          order: [:month, :day, :year],
+        },
+        wrapper: { class: 'col-12' },
+      )
+  %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class='actions col-12'>
+    <%= f.submit 'Save', { class: 'btn btn-success'} %>
   </div>
 <% end %>
