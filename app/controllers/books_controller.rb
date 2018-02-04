@@ -76,6 +76,6 @@ class BooksController < ApplicationController
     end
 
     def create_tasks
-      TaskMaker.new(@book.id).run
+      TaskMaker.new(book: @book).run
     end
 end
