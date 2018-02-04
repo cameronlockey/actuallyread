@@ -21,7 +21,11 @@ development:
 test:
   <<: *default
   database: actuallyread_test
+  username: actuallyread
+  password: actuallyread
 
 production:
   <<: *default
   database: actuallyread_production
+  username: actuallyread
+  password: BTPKJd2ypmc2
