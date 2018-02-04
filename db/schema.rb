@@ -10,48 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125142431) do
+ActiveRecord::Schema.define(version: 20180130015248) do
 
-  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.integer  "pages"
-    t.integer  "chapters"
-    t.boolean  "use_chapters"
-    t.boolean  "email_notifications"
-    t.string   "bool"
+  create_table "books", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.integer "count"
+    t.integer "chunk_size"
+    t.string "units"
+    t.boolean "email_notifications"
+    t.string "bool"
+    t.datetime "deleted_at"
     t.datetime "start_at"
     t.datetime "finish_at"
-    t.datetime "deleted_at"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "book_id"
-    t.string   "title"
-    t.boolean  "all_day"
+  create_table "tasks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "book_id"
+    t.string "title"
+    t.boolean "all_day"
     t.datetime "start_at"
     t.datetime "end_at"
     t.datetime "alert_at"
     t.datetime "completed_at"
     t.datetime "deleted_at"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["book_id"], name: "index_tasks_on_book_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_tasks_on_book_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.datetime "last_login_at"
-    t.datetime "deleted_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "provider"
+    t.string "uid"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "image"
+    t.string "display_name"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "books", "users"
   add_foreign_key "tasks", "books"
 end

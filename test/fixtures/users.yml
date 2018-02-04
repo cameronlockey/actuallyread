@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  last_login_at: 2018-01-25 14:20:03
-  deleted_at: 2018-01-25 14:20:03
+  provider: MyString
+  uid: MyString
+  name: MyString
+  oauth_token: MyString
+  oauth_expires_at: 2018-01-29 00:44:27
 
 two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  last_login_at: 2018-01-25 14:20:03
-  deleted_at: 2018-01-25 14:20:03
+  provider: MyString
+  uid: MyString
+  name: MyString
+  oauth_token: MyString
+  oauth_expires_at: 2018-01-29 00:44:27
