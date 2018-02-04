@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @dates = [3.days.ago, 2.days.ago, 1.day.ago, 0.days.ago]
+    @books = Book.where(user_id: current_user.id)
   end
 
   # GET /users/new
@@ -64,7 +66,8 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      user_id = params[:id] || current_user.id
+      @user = User.find(user_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
